@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:vehup_app/utils/app_colors.dart';
+
 import 'package:vehup_app/utils/app_images.dart';
 import 'package:vehup_app/utils/app_textstyles.dart';
 import 'package:vehup_app/utils/media_query.dart';
