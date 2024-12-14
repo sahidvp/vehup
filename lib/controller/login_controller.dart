@@ -1,28 +1,50 @@
-import 'package:get/get.dart';
-import 'package:vehup_app/model/login/login_model.dart';
-import 'package:vehup_app/serive/api_service.dart';
 
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vehup_app/serive/api_service.dart';
+import 'package:vehup_app/view/home_screen/home_screen.dart';
 
 class LoginController extends GetxController {
-  var isLoading = false.obs;
-  var errorMessage = ''.obs;
-  var token = ''.obs;
+  // Define the TextEditingControllers for email and password
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
-  final ApiService apiService;
+  // GlobalKey for the FormState
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  LoginController({required this.apiService});
+  // Method for form validation and login
+  Future<void> login() async {
+    String email = emailController.text.trim();
+    String password = passwordController.text.trim();
 
-  Future<void> login(String email, String password) async {
-    isLoading.value = true;
-    try {
-      LoginRequest loginRequest = LoginRequest(email: email, password: password);
-      LoginResponse response = await apiService.login(loginRequest);
-      token.value = response.token;
-      errorMessage.value = response.message;
-    } catch (e) {
-      errorMessage.value = 'Login failed: ${e.toString()}';
-    } finally {
-      isLoading.value = false;
+    if (email.isEmpty || password.isEmpty) {
+      Get.snackbar("Error", "Please enter both email and password");
+      return;
     }
+
+    try {
+      // Call your API or service to verify credentials
+      var response = await ApiService.login(email, password);
+      
+
+      if (response.isSuccessful) {
+        Get.offAll(() => HomeScreen());
+      } else {
+        // Show an error message if login fails
+        Get.snackbar("Login Failed", "Invalid email or password");
+      }
+    } catch (error) {
+      // Handle any errors (e.g., network issues)
+      Get.snackbar("Error", "An error occurred during login");
+    }
+  }
+
+  @override
+  void onClose() {
+    // Clean up controllers when the controller is disposed
+    emailController.dispose();
+    passwordController.dispose();
+    super.onClose();
   }
 }
