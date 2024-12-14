@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screeWidth = MediaQueryUtil.screenWidth(context);
     Future.delayed(const Duration(seconds: 3), () async {
-      Get.off(() => const LoginScreen());
+      Get.off(() =>  LoginScreen());
     });
     return Scaffold(
       body: Center(
@@ -21,7 +21,7 @@ class SplashScreen extends StatelessWidget {
         height: screeWidth * .3,
         width: screeWidth * .5,
         child: SvgPicture.asset(
-          AppImages.splashIcon,
+          ImagesPath.splashIcon,
         ),
       )),
     );
