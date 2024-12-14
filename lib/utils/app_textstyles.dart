@@ -11,4 +11,6 @@ class AppTextstyles {
   );
   static const TextStyle loginTextTwo = TextStyle(
       color: AppColors.forgotColor, fontSize: 14, fontWeight: FontWeight.w400);
+  static const TextStyle login =
+      TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16);
 }

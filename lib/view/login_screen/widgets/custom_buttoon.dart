@@ -1,9 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:vehup_app/controller/login_controller.dart';
 import 'package:vehup_app/utils/app_colors.dart';
+import 'package:vehup_app/utils/app_textstyles.dart';
 import 'package:vehup_app/utils/media_query.dart';
 
 class MainButton extends StatelessWidget {
@@ -11,7 +11,8 @@ class MainButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginController = Get.find<LoginController>(); // Access the LoginController
+    final loginController =
+        Get.find<LoginController>(); // Access the LoginController
     final screenWidth = MediaQueryUtil.screenWidth(context);
     return Container(
       width: screenWidth * .9,
@@ -24,10 +25,11 @@ class MainButton extends StatelessWidget {
           // Trigger login process
           loginController.login(); // Call the login method in the controller
         },
-        style: ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor),
-        child: Text(
+        style:
+            ElevatedButton.styleFrom(backgroundColor: AppColors.primaryColor),
+        child: const Text(
           "Login",
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 16),
+          style: AppTextstyles.login,
         ),
       ),
     );
