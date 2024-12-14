@@ -7,6 +7,7 @@ import 'package:vehup_app/utils/app_colors.dart';
 import 'package:vehup_app/utils/app_images.dart';
 import 'package:vehup_app/utils/app_textstyles.dart';
 import 'package:vehup_app/utils/media_query.dart';
+import 'package:vehup_app/view/login_screen/widgets/build_log_text.dart';
 import 'package:vehup_app/view/login_screen/widgets/custom_buttoon.dart';
 import 'package:vehup_app/view/login_screen/widgets/custom_widgets.dart';
 import 'package:vehup_app/controller/login_controller.dart'; // Import the LoginController
@@ -87,13 +88,7 @@ class LoginScreen extends StatelessWidget {
                 SizedBox(height: sH * 2.1),
                 const MainButton(),
                 SizedBox(height: sH * .2),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Don't have an account? "),
-                    Text("Register", style: AppTextstyles.loginTextTwo)
-                  ],
-                ),
+                logText(),
               ],
             ),
           ),
@@ -101,4 +96,6 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+
+ 
 }
